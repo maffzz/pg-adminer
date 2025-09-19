@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    container_name: postgres_c
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: utec
+      POSTGRES_DB: postgres
+    ports:
+      - "8005:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - red_bd
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer_c
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      - red_bd
+
+volumes:
+  pg_data:
+
+networks:
+  red_bd:
+    driver: bridge
