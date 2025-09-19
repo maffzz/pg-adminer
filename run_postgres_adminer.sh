@@ -26,7 +26,7 @@ cat <<EOF
 
 ✅ Accede a Adminer en: http://<IP_de_tu_VM>:8080
    System: PostgreSQL
-   Server: db (o 127.0.0.1 si estás en la misma VM)
+   Server: db
    Username: postgres
    Password: utec
    Database: bd_api_employees
